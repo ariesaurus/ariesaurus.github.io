@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Just For You</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.4/dist/sweetalert2.all.min.js"></script>
+    <script src="https://ini-dariku.github.io/ttc/s.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://ini-dariku.github.io/ttc/s.css" />
+  </head>
+  <body>
+    <script>
+      dt();
+    </script>
+    <div class="ctnr">
+      <div class="lv">
+        <img src="https://dekatutorial.github.io/crd/lv.svg" />
+        <p>Klik Love-nya</p>
+      </div>
+      <div class="ctn">
+        <button class="btn next">[ Lanjut ]</button>
+        <button class="btn send">[ Kirim Pesan ]</button>
+      </div>
+    </div>
+    <script>
+
+      konten = [
+      // Untuk edit gambar dan teks
+      // Untuk menambah gambar dan ucapan cukup tambahkan dibawahnya sesuai format contoh
+
+        {
+          gambar: "nama gambar 1",
+          ucapan: "ucapan 1",
+        },
+
+        {
+          gambar: "nama gambar 2",
+          ucapan: "ucapan 2",
+        },
+
+        {
+          gambar: "nama gambar 3",
+          ucapan: "ucapan 3",
+        },
+        
+      ];
+
+      // Masukan nama file musik didalam tanda kutip
+      musik = "nama file musik";
+
+      // Masukan no wa didalam kutip, format diawali 62
+      nomorWhatsapp = "";
+
+      // Jika mau edit cukup tulisannya saja
+      async function kirimPesan() {
+        var { value: mypesan } = await swalo.fire({ title: "Tulis pesan disini ^_^", input: "textarea", confirmButtonText: "Kirim" });
+        klikA.play();
+        if (mypesan) {
+          await swalo.fire("Kirim pesan ke wa aku ya");
+          klikA.play();
+          if (nomorWhatsapp.length > 9) {
+            location.assign(`https://wa.me/${nomorWhatsapp}?text=${mypesan}`);
+          } else {
+            location.assign(`https://wa.me/?text=${mypesan}`);
+          }
+        } else {
+          await swalo.fire({ title: "Jangan dikosongin dong :)", confirmButtonText: "Iya deh" });
+          klikA.play();
+          kirimPesan();
+        }
+      }
+
+      /*=========================*/
+    </script>
+    <script>
+      DekaTutorial(konten, musik, kirimPesan);
+    </script>
+  </body>
+</html>
